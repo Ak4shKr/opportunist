@@ -9,6 +9,10 @@ const jobSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  eligibility: {
+    type: String,
+    required: true,
+  },
   location: {
     type: String,
     required: true,
@@ -37,11 +41,19 @@ const jobSchema = new mongoose.Schema({
   recruiterId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Recruiter",
-    required: true,
+    // required: true,
   },
   jobfile: {
     type: String,
     // required: true,
+  },
+  status: {
+    type: String,
+    enum: ["active", "inactive"],
+    default: "active",
+  },
+  expiresin: {
+    type: Number,
   },
 });
 
